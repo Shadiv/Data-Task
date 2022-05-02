@@ -1,0 +1,473 @@
+2022-05-01 04:23:03.906 GMT [5380] LOG:  starting PostgreSQL 14.1, compiled by Visual C++ build 1914, 64-bit
+2022-05-01 04:23:03.907 GMT [5380] LOG:  listening on IPv6 address "::", port 5432
+2022-05-01 04:23:03.907 GMT [5380] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-05-01 04:23:04.179 GMT [1400] LOG:  database system was shut down at 2022-04-30 21:42:03 GMT
+2022-05-01 04:23:04.314 GMT [5380] LOG:  database system is ready to accept connections
+2022-05-01 17:33:25.935 GMT [8092] FATAL:  password authentication failed for user "postgres"
+2022-05-01 17:33:25.935 GMT [8092] DETAIL:  Connection matched pg_hba.conf line 89: "host    all             all             ::1/128                 scram-sha-256"
+2022-05-01 17:33:39.654 GMT [8416] FATAL:  password authentication failed for user "postgres"
+2022-05-01 17:33:39.654 GMT [8416] DETAIL:  Connection matched pg_hba.conf line 89: "host    all             all             ::1/128                 scram-sha-256"
+2022-05-01 17:34:03.802 GMT [10760] FATAL:  password authentication failed for user "postgres"
+2022-05-01 17:34:03.802 GMT [10760] DETAIL:  Connection matched pg_hba.conf line 89: "host    all             all             ::1/128                 scram-sha-256"
+2022-05-01 17:54:01.832 GMT [12352] ERROR:  syntax error at or near ")" at character 295
+2022-05-01 17:54:01.832 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance INT,
+	NumOfProducts INT,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary INT,
+	Exited BOOLEAN,
+	)
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 17:54:19.407 GMT [12352] ERROR:  syntax error at or near "," at character 294
+2022-05-01 17:54:19.407 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance INT,
+	NumOfProducts INT,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary INT,
+	Exited BOOLEAN),
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 17:54:30.222 GMT [12352] ERROR:  invalid input syntax for type integer: "101348.88"
+2022-05-01 17:54:30.222 GMT [12352] CONTEXT:  COPY customers_dataset, line 2, column estimatedsalary: "101348.88"
+2022-05-01 17:54:30.222 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance INT,
+	NumOfProducts INT,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary INT,
+	Exited BOOLEAN);
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 17:55:48.485 GMT [12352] ERROR:  invalid input syntax for type integer: "NULL"
+2022-05-01 17:55:48.485 GMT [12352] CONTEXT:  COPY customers_dataset, line 97, column numofproducts: "NULL"
+2022-05-01 17:55:48.485 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance NUMERIC,
+	NumOfProducts INT,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary NUMERIC,
+	Exited BOOLEAN);
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 18:01:56.314 GMT [12352] ERROR:  invalid input syntax for type integer: "NULL"
+2022-05-01 18:01:56.314 GMT [12352] CONTEXT:  COPY customers_dataset, line 97, column numofproducts: "NULL"
+2022-05-01 18:01:56.314 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance NUMERIC,
+	NumOfProducts INT NULL,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary NUMERIC,
+	Exited BOOLEAN);
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 18:02:07.551 GMT [12352] ERROR:  syntax error at or near "OR" at character 217
+2022-05-01 18:02:07.551 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance NUMERIC,
+	NumOfProducts INT OR NULL,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary NUMERIC,
+	Exited BOOLEAN);
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 18:03:30.921 GMT [6384] LOG:  could not rename temporary statistics file "pg_stat_tmp/global.tmp" to "pg_stat_tmp/global.stat": Permission denied
+2022-05-01 18:04:05.639 GMT [12352] ERROR:  invalid input syntax for type integer: "NULL"
+2022-05-01 18:04:05.639 GMT [12352] CONTEXT:  COPY customers_dataset, line 97, column numofproducts: "NULL"
+2022-05-01 18:04:05.639 GMT [12352] STATEMENT:  CREATE TABLE customers_dataset (
+	RowNumber 	SERIAL PRIMARY KEY,
+	CustomerId INT,
+	Surname VARCHAR(50),
+	CreditScore INT,
+	Geography VARCHAR(50),
+	Gender VARCHAR(6),
+	Age INT,
+	Tenure INT,
+	Balance NUMERIC,
+	NumOfProducts INT default null,
+	HasCrCard BOOLEAN, 
+	IsActiveMember BOOLEAN,
+	EstimatedSalary NUMERIC,
+	Exited BOOLEAN);
+	
+	COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+	FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+	DELIMITER ','
+	CSV HEADER;
+2022-05-01 18:13:10.445 GMT [8340] ERROR:  column "numofproducts" cannot be cast automatically to type integer
+2022-05-01 18:13:10.445 GMT [8340] HINT:  You might need to specify "USING numofproducts::integer".
+2022-05-01 18:13:10.445 GMT [8340] STATEMENT:  UPDATE customers_dataset
+	SET numofproducts = NULL
+	WHERE numofproducts = 'NULL';
+	
+	ALTER TABLE customers_dataset
+	ALTER COLUMN numofproducts TYPE INT;
+2022-05-01 18:14:18.202 GMT [8340] ERROR:  column "numofproducts" cannot be cast automatically to type numeric
+2022-05-01 18:14:18.202 GMT [8340] HINT:  You might need to specify "USING numofproducts::numeric".
+2022-05-01 18:14:18.202 GMT [8340] STATEMENT:  UPDATE customers_dataset
+	SET numofproducts = NULL
+	WHERE numofproducts = 'NULL';
+	
+	ALTER TABLE customers_dataset
+	ALTER COLUMN numofproducts TYPE NUMERIC;
+2022-05-01 18:14:45.724 GMT [8340] ERROR:  column "numofproducts" cannot be cast automatically to type integer
+2022-05-01 18:14:45.724 GMT [8340] HINT:  You might need to specify "USING numofproducts::integer".
+2022-05-01 18:14:45.724 GMT [8340] STATEMENT:  UPDATE customers_dataset
+	SET numofproducts = NULL
+	WHERE numofproducts = 'NULL';
+	
+	ALTER TABLE customers_dataset
+	ALTER COLUMN numofproducts TYPE INT;
+2022-05-01 18:21:04.892 GMT [12992] ERROR:  syntax error at or near "\" at character 1
+2022-05-01 18:21:04.892 GMT [12992] STATEMENT:  \s
+2022-05-01 18:22:36.732 GMT [12992] ERROR:  syntax error at or near "postgres" at character 1
+2022-05-01 18:22:36.732 GMT [12992] STATEMENT:  postgres=# SHOW data_directory;
+	        data_directory
+2022-05-01 18:23:11.214 GMT [12992] ERROR:  syntax error at or near "logging_collector" at character 1
+2022-05-01 18:23:11.214 GMT [12992] STATEMENT:  logging_collector = on
+	log_directory = 'pg_log'
+2022-05-01 18:26:07.560 GMT [548] ERROR:  syntax error at or near "1" at character 50
+2022-05-01 18:26:07.560 GMT [548] STATEMENT:  SELECT *
+	FROM customers_dataset
+	WHERE existed IS 1
+2022-05-01 18:26:18.816 GMT [548] ERROR:  column "existed" does not exist at character 39
+2022-05-01 18:26:18.816 GMT [548] HINT:  Perhaps you meant to reference the column "customers_dataset.exited".
+2022-05-01 18:26:18.816 GMT [548] STATEMENT:  SELECT *
+	FROM customers_dataset
+	WHERE existed IS TRUE
+2022-05-01 19:17:19.472 GMT [548] ERROR:  column "country" does not exist at character 196
+2022-05-01 19:17:19.472 GMT [548] STATEMENT:  -- avg age and creditscore of customers with estimated salary above 50 000 and tenure above 3 years by country by gender
+	
+	SELECT avg(age) as avg_age, avg(creditscore) as avg_creditscore, gender, country
+	FROM customers_dataset
+	WHERE tenure > 3 AND estimatedsalary > 50000
+	GROUP BY country, gender
+	ORDER BY avg_age ASC
+2022-05-01 19:19:06.521 GMT [548] ERROR:  syntax error at or near "FROM" at character 207
+2022-05-01 19:19:06.521 GMT [548] STATEMENT:  -- avg age and creditscore of customers with estimated salary above 50 000 and tenure above 3 years by country by gender
+	
+	SELECT gender, geography, avg(age) as avg_age, avg(creditscore) as avg_creditscore,
+	FROM customers_dataset
+	WHERE tenure > 3 AND estimatedsalary > 50000 AND gender IS NOT NULL
+	GROUP BY geography, gender
+	ORDER BY avg_age ASC
+2022-05-01 19:31:47.459 GMT [6384] LOG:  could not rename temporary statistics file "pg_stat_tmp/global.tmp" to "pg_stat_tmp/global.stat": Permission denied
+2022-05-01 19:37:14.393 GMT [548] ERROR:  column "customers_dataset.hascrcard" must appear in the GROUP BY clause or be used in an aggregate function at character 363
+2022-05-01 19:37:14.393 GMT [548] STATEMENT:  -- avg creditscore and age of existing customers with no creditcard, tenure over 2 years and salary below 40000 and above 80000 by country by gender
+	
+	SELECT geography, gender, avg(age) as avg_age, avg(creditscore) as avg_creditscore
+	FROM customers_dataset
+	WHERE tenure > 2 AND estimatedsalary < 40000 OR estimatedsalary > 80000
+	GROUP BY geography, gender
+	HAVING hascrcard = FALSE
+	ORDER BY geography ASC, avg_age ASC
+	
+	-- Avg age of low-risk customers by country (lr: score > 750, salary > 100 000, hascrcard = True, tenure > 2)
+	
+	-- avg number of products of customers in previous category by country
+	
+2022-05-01 19:41:25.378 GMT [548] ERROR:  syntax error at or near "estimatedsalary" at character 208
+2022-05-01 19:41:25.378 GMT [548] STATEMENT:  -- Avg age of low-risk customers by gender (lr: score > 750, salary > 100 000, hascrcard = True, tenure > 2)
+	
+	SELECT gender, avg(age) as avg_age
+	FROM customers_dataset
+	WHERE tenure > 2 AND creditscore > 750 estimatedsalary > 100000 AND hascrcard = TRUE
+	GROUP BY gender
+	
+	
+	
+	-- avg number of products of customers in previous category by country
+	
+2022-05-01 20:02:04.831 GMT [548] ERROR:  syntax error at end of input at character 315
+2022-05-01 20:02:04.831 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geogrpahy, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age BETWEEN(24,45)
+2022-05-01 20:02:26.299 GMT [548] ERROR:  syntax error at or near ";" at character 315
+2022-05-01 20:02:26.299 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geogrpahy, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age BETWEEN(24,45);
+2022-05-01 20:02:40.308 GMT [548] ERROR:  syntax error at or near "GROUP" at character 316
+2022-05-01 20:02:40.308 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geogrpahy, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:02:53.673 GMT [548] ERROR:  syntax error at or near "GROUP" at character 316
+2022-05-01 20:02:53.673 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:03:25.619 GMT [548] ERROR:  syntax error at or near "BETWEEN" at character 304
+2022-05-01 20:03:25.619 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age IS BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:03:43.629 GMT [548] ERROR:  syntax error at or near "geography" at character 1
+2022-05-01 20:03:43.629 GMT [548] STATEMENT:  geography
+2022-05-01 20:03:57.700 GMT [548] ERROR:  syntax error at or near "," at character 315
+2022-05-01 20:03:57.700 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE isactivemember = TRUE AND age BETWEEN(24,45),
+	GROUP BY geography
+2022-05-01 20:04:18.293 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:18.293 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:04:19.501 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:19.501 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:04:20.814 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:20.814 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:04:21.448 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:21.448 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:04:22.350 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:22.350 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography
+2022-05-01 20:04:41.577 GMT [548] ERROR:  syntax error at or near "GROUP" at character 290
+2022-05-01 20:04:41.577 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+	GROUP BY geography, max_sal, min_sal
+2022-05-01 20:05:24.493 GMT [548] ERROR:  syntax error at end of input at character 278
+2022-05-01 20:05:24.493 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+2022-05-01 20:05:25.399 GMT [548] ERROR:  syntax error at end of input at character 278
+2022-05-01 20:05:25.399 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+2022-05-01 20:05:26.097 GMT [548] ERROR:  syntax error at end of input at character 278
+2022-05-01 20:05:26.097 GMT [548] STATEMENT:  -- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+	
+	SELECT avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+	FROM customers_dataset
+	WHERE age BETWEEN(24,45)
+2022-05-01 20:16:40.190 GMT [548] ERROR:  column "customers_dataset.geography" must appear in the GROUP BY clause or be used in an aggregate function at character 103
+2022-05-01 20:16:40.190 GMT [548] STATEMENT:  -- Setřízený seznam 10 zemí, v kterých mají lidé nad 60 let největší průměrnou bilanci účtu 
+	
+	
+	SELECT geography
+	fROM customers_dataset
+	WHERE age > 60
+	ORDER BY avg(balance)
+2022-05-01 20:16:51.327 GMT [548] ERROR:  syntax error at or near "ORDER" at character 160
+2022-05-01 20:16:51.327 GMT [548] STATEMENT:  -- Setřízený seznam 10 zemí, v kterých mají lidé nad 60 let největší průměrnou bilanci účtu 
+	
+	
+	SELECT geography
+	fROM customers_dataset
+	WHERE age > 60
+	GROUP BY
+	ORDER BY avg(balance) DESC
+2022-05-01 20:25:26.177 GMT [13880] ERROR:  syntax error at or near "*" at character 39
+2022-05-01 20:25:26.177 GMT [13880] STATEMENT:  SELECT *
+	FROM customers_dataset
+	WHERE * is NULL;
+	
+2022-05-01 20:38:19.495 GMT [13880] ERROR:  aggregate functions are not allowed in GROUP BY at character 95
+2022-05-01 20:38:19.495 GMT [13880] STATEMENT:  SELECT avg(estimatedsalary), tenure, avg(creditscore)
+	FROM customers_dataset
+	GROUP BY tenure, avg(creditscore)
+	ORDER BY tenure DESC
+	
+	
+2022-05-01 20:45:50.708 GMT [13880] ERROR:  syntax error at or near "SELECT" at character 25
+2022-05-01 20:45:50.708 GMT [13880] STATEMENT:  CREATE TABLE model_data
+	SELECT *
+	FROM customers_dataset
+	WHERE creditscore IS NOT NULL AND age IS NOT NULL AND hascrcard IS NOT NULL AND numofproducts IS NOT NULL AND tenure IS NOT NULL AND exited IS NOT NULL
+	
+2022-05-01 20:46:40.026 GMT [13880] ERROR:  relation "model_data" already exists
+2022-05-01 20:46:40.026 GMT [13880] STATEMENT:  CREATE TABLE model_data AS SELECT * FROM customers_dataset WHERE creditscore IS NOT NULL AND age IS NOT NULL AND hascrcard IS NOT NULL AND numofproducts IS NOT NULL AND tenure IS NOT NULL AND exited IS NOT NULL
+	
+2022-05-01 20:47:22.111 GMT [1684] ERROR:  relation "model_data" already exists
+2022-05-01 20:47:22.111 GMT [1684] STATEMENT:  CREATE TABLE public.model_data
+	(
+	)
+	;
+	
+	
+	ALTER TABLE IF EXISTS public.model_data
+	    OWNER to postgres;
+	
+	
+	
+	
+	
+	
+	
+	
+	
+2022-05-01 20:59:18.606 GMT [6840] ERROR:  column "cidc" does not exist at character 266
+2022-05-01 20:59:18.606 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1
+2022-05-01 20:59:59.883 GMT [6840] ERROR:  column "cidc" does not exist at character 242
+2022-05-01 20:59:59.883 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	SELECT numofproducts, count(customerid) as cidc FROM model_data WHERE cidc = 1 GROUP BY numofproducts
+2022-05-01 21:00:19.784 GMT [6840] ERROR:  syntax error at or near "numofproducts" at character 1
+2022-05-01 21:00:19.784 GMT [6840] STATEMENT:  numofproducts
+2022-05-01 21:01:07.988 GMT [6840] ERROR:  column "cidc" does not exist at character 268
+2022-05-01 21:01:07.988 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	SELECT numofproducts, count(customerid) as cidc 
+	FROM model_data 
+	GROUP BY numofproducts
+	HAVING cidc = 1
+2022-05-01 21:02:23.429 GMT [6840] ERROR:  subquery has too many columns at character 231
+2022-05-01 21:02:23.429 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	
+	SELECT numofproducts
+	FROM model_data 
+	WHERE numofproducts IN (SELECT numofproducts, count(customerid) as cidc 
+							FROM model_data 
+							GROUP BY numofproducts)
+	
+2022-05-01 21:02:39.299 GMT [6840] ERROR:  subquery has too many columns at character 231
+2022-05-01 21:02:39.299 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	
+	SELECT numofproducts
+	FROM model_data 
+	WHERE numofproducts IN(SELECT numofproducts, count(customerid) as cidc 
+							FROM model_data 
+							GROUP BY numofproducts)
+	
+2022-05-01 21:06:24.626 GMT [6840] ERROR:  aggregate functions are not allowed in WHERE at character 215
+2022-05-01 21:06:24.626 GMT [6840] STATEMENT:  -- DELETE FROM model_data
+	-- WHERE age > 100 AND numofproducts IN(SELECT numofproducts, count(customerid) as cidc FROM model_data GROUP BY numofproducts HAVING cidc = 1)
+	
+	SELECT numofproducts
+	FROM model_data
+	WHERE count(numofproducts) = 1
+	
+2022-05-01 21:47:05.009 GMT [6384] LOG:  could not rename temporary statistics file "pg_stat_tmp/global.tmp" to "pg_stat_tmp/global.stat": Permission denied
+2022-05-01 22:07:12.378 GMT [1136] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2022-05-01 22:07:12.379 GMT [4280] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2022-05-01 22:07:12.379 GMT [1756] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2022-05-01 22:07:12.380 GMT [1684] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2022-05-01 22:07:12.381 GMT [11744] LOG:  could not receive data from client: An existing connection was forcibly closed by the remote host.
+	
+2022-05-01 22:07:15.929 GMT [5380] LOG:  received fast shutdown request
+2022-05-01 22:07:15.932 GMT [6404] ERROR:  canceling statement due to user request
+2022-05-01 22:07:15.978 GMT [5380] LOG:  aborting any active transactions
+2022-05-01 22:07:15.979 GMT [6584] FATAL:  terminating connection due to administrator command
+2022-05-01 22:07:15.979 GMT [5380] LOG:  background worker "logical replication launcher" (PID 6404) exited with exit code 1
+2022-05-01 22:07:16.002 GMT [6328] LOG:  shutting down
+2022-05-01 22:07:16.133 GMT [5380] LOG:  database system is shut down
