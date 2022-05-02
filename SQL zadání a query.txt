@@ -23,9 +23,9 @@ FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv
 DELIMITER ','
 CSV HEADER;
 
+-- small data correction
 
-UPDATE customers_dataset
-SET numofproducts = 0
+DELETE FROM customers_dataset
 WHERE numofproducts = 'NULL';
 
 UPDATE customers_dataset
@@ -85,7 +85,7 @@ WHERE tenure > 3 AND estimatedsalary > 50000 AND gender IS NOT NULL
 GROUP BY geography, gender
 ORDER BY geography ASC, avg_age ASC;
 
--- avg creditscore and age of existing customers with no creditcard, tenure over 2 years and salary below 40000 and above 80000 by country (excluding Germany) by gender
+-- avg creditscore and age of customers with no creditcard, tenure over 2 years and salary below 40000 or above 80000 by country (excluding Germany) by gender
 
 SELECT geography, gender, avg(age) as avg_age, avg(creditscore) as avg_creditscore
 FROM customers_dataset
@@ -140,7 +140,7 @@ SELECT *
 FROM customers_dataset
 WHERE customerid IS NOT NULL AND creditscore IS NOT NULL AND age IS NOT NULL AND tenure IS NOT NULL AND numofproducts IS NOT NULL AND hascrcard IS NOT NULL AND exited IS NOT NULL
 
-Z tabulky odstraníme nesmyslné hodnoty (Zemi divu, věk 144 a kritické hodnoty počtu produktu). 
+Z tabulky odstraníme nesmyslné hodnoty (Zemi divu, věk 144) a kritické hodnoty (počet produktu). 
 
 DELETE FROM model_data
 WHERE age > 100 AND geography = 'Wonderland' AND numofproducts IN(SELECT numofproducts
