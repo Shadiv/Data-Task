@@ -1,0 +1,152 @@
+-- 1) PostgreSQL (protože už ho dávno mám)
+
+-- 2) Vytvoříme tabulku
+
+CREATE TABLE customers_dataset (
+RowNumber 	SERIAL PRIMARY KEY,
+CustomerId INT,
+Surname VARCHAR(50),
+CreditScore INT,
+Geography VARCHAR(50),
+Gender VARCHAR(6),
+Age INT,
+Tenure INT,
+Balance NUMERIC,
+NumOfProducts VARCHAR(50),
+HasCrCard BOOLEAN, 
+IsActiveMember BOOLEAN,
+EstimatedSalary NUMERIC,
+Exited BOOLEAN);
+
+COPY customers_dataset(RowNumber,CustomerId,Surname,CreditScore,Geography,Gender,Age,Tenure,Balance,NumOfProducts,HasCrCard,IsActiveMember,EstimatedSalary,Exited)
+FROM 'F:\Files and programms\VSCode Projects\Testova uloha\customers_dataset.csv'
+DELIMITER ','
+CSV HEADER;
+
+
+UPDATE customers_dataset
+SET numofproducts = 0
+WHERE numofproducts = 'NULL';
+
+UPDATE customers_dataset
+SET geography = 'France'
+WHERE geography = 'Francee';
+
+
+ALTER TABLE customers_dataset
+ALTER COLUMN numofproducts TYPE INT USING numofproducts::integer;
+
+
+--- 3 - simple SELECTS:
+
+-- Exited customers: 
+
+SELECT *
+FROM customers_dataset
+WHERE exited IS TRUE;
+
+-- number of customers by countries:
+
+SELECT geography, COUNT(customerid)
+FROM customers_dataset
+GROUP BY geography
+
+-- 4 - Trochu slozitejsi selecty
+
+-- Jaký je průměrný, maximální a minimální plat v jednotlivých zemích pro všechny aktivní klienty banky ve věku 26 - 45 let
+
+SELECT geography, avg(estimatedsalary) as avg_sal, max(estimatedsalary) as max_sal, min(estimatedsalary) as min_sal
+FROM customers_dataset
+WHERE isactivemember = TRUE AND age IN(24,45)
+GROUP BY geography
+
+-- Setřízený seznam 10 zemí, v kterých mají lidé nad 60 let největší průměrnou bilanci účtu 
+
+SELECT geography
+fROM customers_dataset
+WHERE age > 60
+GROUP BY geography
+ORDER BY avg(balance) DESC
+LIMIT 10;
+
+-- Průměrná mzda a průměrné creditscore zákazníku dle délky vztahu s bankou. 
+
+SELECT avg(estimatedsalary), tenure, avg(creditscore)
+FROM customers_dataset
+GROUP BY tenure
+ORDER BY tenure DESC
+
+
+-- avg age, creditscore and salary of customers with estimated salary above 50 000 and tenure above 3 years by country by gender
+
+SELECT geography, gender, avg(age) as avg_age, avg(creditscore) as avg_creditscore, avg(estimatedsalary) as avg_salary
+FROM customers_dataset
+WHERE tenure > 3 AND estimatedsalary > 50000 AND gender IS NOT NULL
+GROUP BY geography, gender
+ORDER BY geography ASC, avg_age ASC;
+
+-- avg creditscore and age of existing customers with no creditcard, tenure over 2 years and salary below 40000 and above 80000 by country (excluding Germany) by gender
+
+SELECT geography, gender, avg(age) as avg_age, avg(creditscore) as avg_creditscore
+FROM customers_dataset
+WHERE tenure > 2 AND estimatedsalary < 40000 OR estimatedsalary > 80000 AND hascrcard = FALSE
+GROUP BY geography, gender
+HAVING geography != 'Germany'
+ORDER BY geography ASC, avg_age ASC
+
+-- Avg age of low-risk customers by gender (lr: score > 750, salary > 100 000, hascrcard = True, tenure > 2)
+
+SELECT gender, avg(age) as avg_age
+FROM customers_dataset
+WHERE tenure > 2 AND creditscore > 750 AND estimatedsalary > 100000 AND hascrcard = TRUE
+GROUP BY gender
+
+-- avg number of products and tenure of customers older than average customer in previous category by country (alphabetical order) and by gender 
+
+SELECT geography, gender, ROUND(avg(numofproducts),2) as avg_numofproducts, ROUND(avg(tenure),2) as avg_tenure
+FROM customers_dataset
+JOIN (
+	SELECT gender, avg(age) as avg_age
+	FROM customers_dataset
+	WHERE tenure > 2 AND creditscore > 750 AND estimatedsalary > 100000 AND hascrcard = TRUE
+	GROUP BY gender)query_in USING(gender)
+WHERE age > query_in.avg_age
+GROUP BY geography, gender
+ORDER BY geography ASC
+
+
+
+Klíčové metriky pro model: 
+
+1) Score - větší score, větší stabilita - menší riziko
+2) Age - mladší zákazníky pravděpodobně budou mít větši tendenci hledat novou banku (lepší hypotéční podmínky, změna zaměstnání, stěhování do jiné země kde banka nemá pobočku, apod.)
+3) Kreditní karta - zákazník s kreditkou má menší pravděpodobnost odejít, neboť jejím používáním má s bankou užší vztah než zákazník bez kreditky
+4) Počet produktu - čim více produktu, tím menší pravděpodobnost odchodu
+5) Doba s námi (Tenure) - čím déle je zákazník u banky, tím menší je pravděpodobnost odchodu
+6) Exited - pokud zákazník už někdy odcházel, zvýšuje se pravděpodobnost, že odejde znova. 
+
+Ostatní nerelevantní:
+balance je celková, nikoliv průměrná za nějaké období - nepřesný údaj, 
+očekáváná mzda nemá vliv na délku očekáváného vztahu s bankou (bylo vydět z dotazu č.4.3), 
+geografické umístění vyřazujeme kvůli nedostatku informací o konkurenci v daných zemích, 
+aktivní členství taktéž nepovažujeme za relevantní.
+
+Úprava dat:
+
+- vytvoříme tabulku pro model, očištěnou o NULL v řádcích, které považujeme za relevantní
+
+CREATE TABLE model_data as
+SELECT *
+FROM customers_dataset
+WHERE customerid IS NOT NULL AND creditscore IS NOT NULL AND age IS NOT NULL AND tenure IS NOT NULL AND numofproducts IS NOT NULL AND hascrcard IS NOT NULL AND exited IS NOT NULL
+
+Z tabulky odstraníme nesmyslné hodnoty (Zemi divu, věk 144 a kritické hodnoty počtu produktu). 
+
+DELETE FROM model_data
+WHERE age > 100 AND geography = 'Wonderland' AND numofproducts IN(SELECT numofproducts
+				FROM model_data GROUP BY numofproducts 	HAVING count(numofproducts) = 1)
+
+Dále budeme pokračovat v VSCode. Exportujeme tabulku do csv
+
+COPY model_data TO 'F:\Files and programms\VSCode Projects\Testova uloha\model_data.csv' DELIMITER ',' CSV HEADER;
+
