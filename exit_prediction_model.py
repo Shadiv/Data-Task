@@ -143,7 +143,7 @@ logreg_def.fit(X_train, y_train)
 y_predict = logreg_def.predict(X_test)
 print('Accuracy of logistic regression classifier on test set: {:.2f}'.format(logreg_def.score(X_test, y_test)))
 
-# Print conclusion matrix to show correct and incorrect predictions
+# Print confusion matrix to show correct and incorrect predictions
 
 confusion_matrix = metrics.confusion_matrix(y_test, y_predict)
 print(confusion_matrix)
