@@ -123,7 +123,7 @@ ORDER BY geography ASC
 -- 3) Kreditní karta - zákazník s kreditkou má menší pravděpodobnost odejít, neboť jejím používáním má s bankou užší vztah než zákazník bez kreditky
 -- 4) Počet produktu - čim více produktu, tím menší pravděpodobnost odchodu
 -- 5) Doba s námi (Tenure) - čím déle je zákazník u banky, tím menší je pravděpodobnost odchodu
--- 6) Exited - pokud zákazník už někdy odcházel, zvýšuje se pravděpodobnost, že odejde znova. 
+-- 6) Exited - testovací pole
 
 -- Ostatní nerelevantní:
 -- balance je celková, nikoliv průměrná za nějaké období - nepřesný údaj, 
